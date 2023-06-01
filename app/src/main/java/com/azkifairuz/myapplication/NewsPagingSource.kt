@@ -3,6 +3,7 @@ package com.azkifairuz.myapplication
 import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.azkifairuz.myapplication.data.NewsApiService
 
 class NewsPagingSource(private val newsApiService: NewsApiService) : PagingSource<Int, News>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, News> {
