@@ -1,5 +1,7 @@
 package com.azkifairuz.myapplication.ui.home
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -42,5 +44,9 @@ fun NewsCard(news: NewsItem) {
         modifier = Modifier
             .padding(horizontal = 10.dp, vertical = 5.dp)
             .fillMaxSize()
-    )
+    ){
+        Column() {
+            Image(painter = image, contentDescription = null)
+        }
+    }
 }
