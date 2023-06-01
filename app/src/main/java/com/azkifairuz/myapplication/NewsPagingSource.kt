@@ -1,5 +1,6 @@
 package com.azkifairuz.myapplication
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 
@@ -7,11 +8,12 @@ class NewsPagingSource(private val newsApiService: NewsApiService) : PagingSourc
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, News> {
         try {
             val page = params.key ?: 1
-            val response = newsApiService.getTopHeadlines("id", "012ea5fc3165458b9c9188b015481f81", page, params.loadSize)
+            val response = newsApiService
+                .getTopHeadlines()
             if (response.isSuccessful) {
-                val newsList = response.body()?.article ?: emptyList()
-                val prevKey = if (page > 1) page - 1 else null
-                val nextKey = if (newsList.isNotEmpty()) page + 1 else null
+                val newsList = response.body()?.article ?: "asiii"
+
+                Log.e("coba", "load: $newsList")
                 return LoadResult.Page(data = newsList, prevKey = prevKey, nextKey = nextKey)
             } else {
                 return LoadResult.Error(Exception("Failed to fetch news: ${response.code()}"))
