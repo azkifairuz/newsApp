@@ -16,6 +16,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.paging.compose.items
@@ -61,6 +62,7 @@ fun NewsCard(news: NewsItem) {
             Column(modifier = Modifier.padding(10.dp)) {
                 
                 Text(text = news.title, fontWeight = FontWeight.Bold)
+                Text(text = news.description, maxLines = 2, overflow = TextOverflow.Ellipsis)
                 
             }
         }
