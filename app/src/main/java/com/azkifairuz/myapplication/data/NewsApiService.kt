@@ -15,6 +15,6 @@ interface NewsApiService {
         pageNumber: Int = 1,
         @Query("apiKey")
         apiKey: String = Constant.API_KEY,
-    ):Response<List<NewsResponse>>
+    ):Response<List<NewsModel>>
 
 }

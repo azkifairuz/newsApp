@@ -1,6 +1,5 @@
 package com.azkifairuz.myapplication.data
 
-import java.io.Serializable
 
 
 data class NewsModel(
@@ -12,4 +11,4 @@ data class NewsModel(
     val urlToImage: String,
     val publishedAt: String,
 
-): Serializable
+)
