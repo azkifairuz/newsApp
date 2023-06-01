@@ -1,6 +1,5 @@
 package com.azkifairuz.myapplication.data
 
-import com.azkifairuz.myapplication.NewsResponse
 import com.azkifairuz.myapplication.utils.Constant
 import retrofit2.Response
 import retrofit2.http.GET
