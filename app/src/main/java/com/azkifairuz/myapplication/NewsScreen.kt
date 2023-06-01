@@ -67,6 +67,7 @@ fun NewsList(newsViewModel: NewsViewModel) {
 @Composable
 fun NewsItem(news: News?) {
     if (news != null) {
+
         Column(modifier = Modifier.padding(16.dp)) {
             Text(text = news.title, style = MaterialTheme.typography.h6)
             Spacer(modifier = Modifier.height(8.dp))
