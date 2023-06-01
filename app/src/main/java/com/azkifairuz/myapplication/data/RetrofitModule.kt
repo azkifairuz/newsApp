@@ -22,4 +22,10 @@ object RetrofitModule {
             .build()
     }
 
+
+    @Singleton
+    @Provides
+    fun provideNewsApi(retrofit: Retrofit): NewsApiService {
+        return retrofit.create(NewsApiService::class.java)
+    }
 }
