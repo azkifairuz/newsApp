@@ -1,13 +1,8 @@
 package com.azkifairuz.myapplication
 
-import android.graphics.drawable.Icon
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,13 +20,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import coil.compose.rememberImagePainter
 import coil.transform.RoundedCornersTransformation
+import com.azkifairuz.myapplication.data.NewsModel
+
 @Composable
 fun NewsList(newsViewModel: NewsViewModel) {
     val newsList = newsViewModel.newsList.collectAsLazyPagingItems()
@@ -53,19 +49,12 @@ fun NewsList(newsViewModel: NewsViewModel) {
             }
         }
     }
-    LaunchedEffect(Unit) {
-        val itemCount = newsList.snapshot().items.size
-        val lastVisibleItemIndex = scrollState.layoutInfo.visibleItemsInfo.lastOrNull()?.index
 
-        if (lastVisibleItemIndex != null && itemCount - lastVisibleItemIndex < 5) {
-            newsList.loadState
-        }
-    }
 
 }
 
 @Composable
-fun NewsItem(news: News?) {
+fun NewsItem(news: NewsModel?) {
     if (news != null) {
 
         Column(modifier = Modifier.padding(16.dp)) {
