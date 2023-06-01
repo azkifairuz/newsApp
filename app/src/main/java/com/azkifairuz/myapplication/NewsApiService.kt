@@ -1,5 +1,6 @@
 package com.azkifairuz.myapplication
 
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -10,5 +11,5 @@ interface NewsApiService {
         @Query("apiKey") apiKey: String,
         @Query("page") page: Int,
         @Query("pageSize") pageSize: Int,
-    )
+    ):Response<NewsResponse>
 }
