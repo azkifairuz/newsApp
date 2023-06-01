@@ -15,5 +15,7 @@ class NewsViewModel: ViewModel() {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create(NewsApiService::class.java)
-
+    val newsList: Flow<PagingData<News>> = Pager(PagingConfig(pageSize = 20)) {
+        NewsPagingSource(newsApiService)
+    }.flow
 }
