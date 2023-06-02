@@ -4,7 +4,7 @@ import com.azkifairuz.myapplication.data.NewsModel
 
 
 data class NewsItem(
-    val id:Int,
+    val id:String,
     val author: String,
     val content: String?,
     val title: String,
@@ -13,4 +13,4 @@ data class NewsItem(
     val publishedAt: String,
 )
 
-fun NewsModel.toNewsItem() = NewsItem(id,author,content,title,description,urlToImage, publishedAt)
+fun NewsModel.toNewsItem() = NewsItem(id.toString(),author,content,title,description,urlToImage, publishedAt)

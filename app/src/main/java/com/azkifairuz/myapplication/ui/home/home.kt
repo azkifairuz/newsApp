@@ -1,5 +1,6 @@
 package com.azkifairuz.myapplication.ui.home
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -32,7 +33,7 @@ fun HomeScreen() {
     
     LazyColumn{
         items(news) {news: NewsItem ->
-
+            Log.e("HOHO",news.urlToImage)
             NewsCard(news = news)
         }
     }
@@ -41,7 +42,7 @@ fun HomeScreen() {
 @Composable
 fun NewsCard(news: NewsItem) {
 
-    val image = rememberAsyncImagePainter(model = news.urlToImage)
+
 
     Card(
         elevation = 5.dp,
@@ -52,7 +53,7 @@ fun NewsCard(news: NewsItem) {
     ){
         Column() {
             Image(
-                painter = image, 
+                painter = rememberAsyncImagePainter(model = news.urlToImage),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier

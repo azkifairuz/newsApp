@@ -1,5 +1,7 @@
 package com.azkifairuz.myapplication.data
 
+import com.azkifairuz.myapplication.common.BaseResponse
+import com.azkifairuz.myapplication.domain.item.NewsResponse
 import com.azkifairuz.myapplication.utils.Constant
 import retrofit2.Response
 import retrofit2.http.GET
@@ -14,6 +16,6 @@ interface NewsApiService {
         pageNumber: Int = 1,
         @Query("apiKey")
         apiKey: String = Constant.API_KEY,
-    ):Response<List<NewsModel>>
+    ):Response<BaseResponse<List<NewsResponse>>>
 
 }

@@ -7,6 +7,8 @@ import com.azkifairuz.myapplication.domain.item.NewsItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import java.lang.Exception
 import javax.inject.Inject
@@ -21,13 +23,13 @@ class HomeViewModel @Inject constructor(private val getNewsUseCase: GetNewsUseCa
         getNews()
     }
 
-    private fun getNews() {
-        viewModelScope.launch {
-            try {
-                val news = getNewsUseCase()
-                _news.value = news
-            } catch (_:Exception){}
-        }
+    private fun getNews() =viewModelScope.launch {
+
+        getNewsUseCase()
+            .onEach {
+                _news.tryEmit(it)
+            }
+            .collect()
     }
 
 }
